@@ -2,32 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "public/index.html",
-      "use": "@vercel/static-build"
-    },
-    {
-      "src": "src/api/**/*.js",
-      "use": "@vercel/node"
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "handle": "filesystem" },
-    {
-      "src": "/api/(.*)",
-      "dest": "/src/api/$1.js"
-    },
     {
       "src": "/(.*)",
-      "dest": "/public/index.html"
+      "dest": "/public/$1"
     }
-  ],
-  "env": {
-    "FIREBASE_API_KEY": "AIzaSyD0-fJViNe8ComHqnnddoTCrJqXMpo5V38",
-    "FIREBASE_AUTH_DOMAIN": "crud-angular-74351.firebaseapp.com",
-    "FIREBASE_PROJECT_ID": "crud-angular-74351",
-    "VIA_CEP_API_URL": "https://viacep.com.br/ws"
-  },
-  "functions": {
-    "runtime": "@vercel/node"
-  }
+  ]
 }
